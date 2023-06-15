@@ -29,9 +29,8 @@ public class Main {
         }
 
         System.out.println("\nEnter your choice:\t");
-        Scanner sc = new Scanner(System.in);
 
-        try {
+        try (Scanner sc = new Scanner(System.in)) {
             int options = sc.nextInt();
 
             switch (options) {
@@ -65,9 +64,9 @@ public class Main {
                     optionsSelection();
                     break;
                 case 5:
-                    try {
+                    try (Scanner searchScanner = new Scanner(System.in)) {
                         System.out.println("Enter the expense you need to search:\t");
-                        int expenseToSearch = sc.nextInt();
+                        int expenseToSearch = searchScanner.nextInt();
                         searchExpenses(expenses, expenseToSearch);
                     } catch (InputMismatchException e) {
                         System.out.println("Invalid input. Please enter a valid expense value.");
@@ -85,8 +84,6 @@ public class Main {
             System.out.println("Invalid input. Please enter a valid choice.");
             optionsSelection();
         }
-
-        sc.close();
     }
 
     private static void closeApp() {
@@ -109,7 +106,6 @@ public class Main {
         } else {
             System.out.println("Expense not found in the list.");
         }
-
     }
 
     private static void sortExpenses(ArrayList<Integer> arrayList) {
