@@ -64,13 +64,9 @@ public class Main {
                     optionsSelection();
                     break;
                 case 5:
-                    try (Scanner searchScanner = new Scanner(System.in)) {
                         System.out.println("Enter the expense you need to search:\t");
-                        int expenseToSearch = searchScanner.nextInt();
+                        int expenseToSearch = sc.nextInt();
                         searchExpenses(expenses, expenseToSearch);
-                    } catch (InputMismatchException e) {
-                        System.out.println("Invalid input. Please enter a valid expense value.");
-                    }
                     optionsSelection();
                     break;
                 case 6:
